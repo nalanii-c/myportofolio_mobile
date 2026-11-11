@@ -1,4 +1,4 @@
-# 🚀 Personal Portfolio Website - Django
+# 🚀 Personal Portfolio Mobile - Django
 
 [![Status](https://img.shields.io/badge/Status-Completed-success?style=flat-square)](https://img.shields.io/badge/Status-Completed-success?style=flat-square)
 [![Django](https://img.shields.io/badge/Django-5.x-092E20?style=flat-square&logo=django&logoColor=white)](https://www.djangoproject.com/)
