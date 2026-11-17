@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 import 'package:myportofolio_mobile/widgets/project_card.dart';
 
@@ -30,7 +30,8 @@ class MyHomePage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       drawer: const LeftDrawer(),
-      body: Padding(
+      body: SingleChildScrollView(
+        child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,6 +75,7 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
+      ),
     );
   }
 }
@@ -116,5 +118,7 @@ class ItemHomepage {
 
   ItemHomepage(this.name, this.icon);
 }
+
+
 
 
