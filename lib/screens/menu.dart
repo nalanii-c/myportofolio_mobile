@@ -12,6 +12,7 @@ class MyHomePage extends StatelessWidget {
   final List<ItemHomepage> items = [
     ItemHomepage("Lihat Proyek", Icons.folder),
     ItemHomepage("Tambah Proyek", Icons.add_circle),
+    ItemHomepage("Education", Icons.school),
     ItemHomepage("Logout", Icons.logout),
   ];
 
@@ -118,6 +119,8 @@ class ItemHomepage {
 
   ItemHomepage(this.name, this.icon);
 }
+
+
 
 
 
