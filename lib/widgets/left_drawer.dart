@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
 import 'package:myportofolio_mobile/screens/education_form.dart';
@@ -10,31 +10,22 @@ class LeftDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
+        padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
+          Container(
+            height: 140,
+            padding: const EdgeInsets.all(16),
+            alignment: Alignment.bottomLeft,
+            decoration: const BoxDecoration(
               color: Colors.indigo,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'My Portfolio',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Explore personal projects and experiences!',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
+            child: const Text(
+              'My Portfolio',
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
           ),
           ListTile(
