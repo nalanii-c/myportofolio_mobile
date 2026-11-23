@@ -1,4 +1,4 @@
-﻿# ðŸš€ Personal Portfolio Website - Django
+﻿#  Personal Portfolio Website - Django
 
 [![Status](https://img.shields.io/badge/Status-Completed-success?style=flat-square)](https://img.shields.io/badge/Status-Completed-success?style=flat-square)
 [![Django](https://img.shields.io/badge/Django-5.x-092E20?style=flat-square&logo=django&logoColor=white)](https://www.djangoproject.com/)
@@ -7,7 +7,7 @@
 
 ---
 
-## ðŸ‘©â€ðŸ’» Identitas Mahasiswa
+##  Identitas Mahasiswa
 
 | Atribut | Keterangan |
 | :--- | :--- |
@@ -19,9 +19,9 @@
 
 ---
 
-## ðŸ“š Refleksi Pembelajaran
+##  Refleksi Pembelajaran
 
-ðŸ“š Assignment 7 â€” Basic Flutter
+Assignment 7 -  Basic Flutter
 
 1. Widget Tree
 
@@ -66,7 +66,7 @@ Aku juga membuat `MyHomePage`, `InfoCard`, dan `ItemCard` sebagai custom widget.
 
 ---
 
-ðŸ“š Assignment 8 â€” Flutter Navigation, Layouts, Forms, and Input Elements
+Assignment 8 - Flutter Navigation, Layouts, Forms, and Input Elements
 
 1. Navigator.push() digunakan untuk membuka halaman baru tanpa menghapus halaman sebelumnya dari navigation stack. Navigator.pushReplacement() digunakan untuk membuka halaman baru sekaligus menggantikan halaman saat ini. Sementara itu, Navigator.pop() digunakan untuk kembali ke halaman sebelumnya.
 
@@ -80,9 +80,9 @@ Pada project ini, Navigator.push() digunakan untuk membuka halaman Add Project d
 
 Example, tahun 20ab ditolak cuz tdk memiliki format empat digit angka. Dengan memilih jenis input atau keyboard angka belum cukup karena pengguna masih mungkin memasukkan data yang tidak sesuai aturan. Maka dari itu, validasi tetap diperlukan untuk memastikan data akurat.
 
-## ðŸ¤– AI Disclosure
+## – AI Disclosure
 
-ðŸ“š Assignment 7 â€” Basic Flutter 
+Assignment 7 -  Basic Flutter 
 Selama mengerjakan tugas ini, aku menggunakan AI untuk membantu memahami materi Flutter dan mencari solusi ketika mengalami error.
 
 - **Bantuan:** Memahami widget, memisahkan file, dan memperbaiki konfigurasi Flutter.
@@ -91,7 +91,7 @@ Selama mengerjakan tugas ini, aku menggunakan AI untuk membantu memahami materi 
 
 Dari proses ini, aku belajar bahwa AI bisa membantu, tetapi aku tetap perlu memahami kode yang digunakan.
 
-ðŸ“š Assignment 8 â€” Flutter Navigation, Layouts, Forms, and Input Elements
+Assignment 8 - Flutter Navigation, Layouts, Forms, and Input Elements
 Selama mengerjakan Assignment 8, aku menggunakan AI untuk membantu memahami konsep Flutter dan menyelesaikan kendala dalam implementasi.
 
 - **Bantuan:** Memahami navigasi menggunakan Navigator, penggunaan Drawer, pembuatan Form, validasi input, AlertDialog, dan widget testing.
