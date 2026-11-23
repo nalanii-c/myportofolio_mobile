@@ -78,7 +78,6 @@ Pada project ini, Navigator.push() digunakan untuk membuka halaman Add Project d
 
 4. GlobalKey<FormState> dipakai buat mengakses kondisi Form, validator memeriksa apakah setiap input sesuai dengan aturan, dan validate() menjalankan seluruh validasi ketika tombol Simpan ditekan.
 
-
 Example, tahun 20ab ditolak cuz tdk memiliki format empat digit angka. Dengan memilih jenis input atau keyboard angka belum cukup karena pengguna masih mungkin memasukkan data yang tidak sesuai aturan. Maka dari itu, validasi tetap diperlukan untuk memastikan data akurat.
 
 ## ðŸ¤– AI Disclosure
