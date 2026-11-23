@@ -1,9 +1,11 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myportofolio_mobile/main.dart';
+import 'package:myportofolio_mobile/screens/project_form.dart';
 
 void main() {
-  testWidgets('Homepage menampilkan identitas mahasiswa', (WidgetTester tester) async {
+  testWidgets('Homepage menampilkan identitas mahasiswa',
+      (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
 
     expect(find.text('MyPortfolio'), findsOneWidget);
@@ -12,89 +14,137 @@ void main() {
     expect(find.text('PBP A'), findsOneWidget);
   });
 
-  testWidgets('Tambah Proyek membuka halaman form', (WidgetTester tester) async {
+  testWidgets('Tambah Proyek membuka halaman form',
+      (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
 
     await tester.tap(find.text('Tambah Proyek'));
     await tester.pumpAndSettle();
 
     expect(find.text('Add Project Form'), findsOneWidget);
+  });
+
+  testWidgets('Form menolak nama dan deskripsi kosong',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: ProjectFormPage()),
+    );
 
     await tester.tap(find.text('Save'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Nama proyek tidak boleh kosong!'), findsOneWidget);
-    expect(find.text('Deskripsi proyek tidak boleh kosong!'), findsOneWidget);
+    expect(find.text('Nama proyek tidak boleh kosong!'),
+        findsOneWidget);
+    expect(find.text('Deskripsi proyek tidak boleh kosong!'),
+        findsOneWidget);
+    expect(find.text('Proyek berhasil ditambahkan!'),
+        findsNothing);
   });
 
-  testWidgets('Education dapat dibuka dari kartu Home', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Form menolak URL yang tidak valid',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: ProjectFormPage()),
+    );
 
-    await tester.tap(find.text('Education'));
+    await tester.enterText(
+        find.byType(TextFormField).at(0), 'My Portfolio');
+    await tester.enterText(
+        find.byType(TextFormField).at(1), 'Portfolio pribadi');
+    await tester.enterText(
+        find.byType(TextFormField).at(3), 'alamat-salah');
+
+    await tester.tap(find.text('Save'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Education Form'), findsOneWidget);
-    expect(find.text('Nama Institusi'), findsOneWidget);
+    expect(find.text('Masukkan URL yang valid!'),
+        findsOneWidget);
+    expect(find.text('Proyek berhasil ditambahkan!'),
+        findsNothing);
   });
 
-  testWidgets('Education dapat dibuka dari Drawer', (WidgetTester tester) async {
+  testWidgets('Form menerima URL yang valid',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: ProjectFormPage()),
+    );
+
+    await tester.enterText(
+        find.byType(TextFormField).at(0), 'My Portfolio');
+    await tester.enterText(
+        find.byType(TextFormField).at(1), 'Portfolio pribadi');
+    await tester.enterText(
+        find.byType(TextFormField).at(3), 'https://github.com');
+
+    await tester.tap(find.text('Save'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Proyek berhasil ditambahkan!'),
+        findsOneWidget);
+    expect(find.text('Tautan: https://github.com'),
+        findsOneWidget);
+  });
+
+  testWidgets('URL kosong diperbolehkan',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: ProjectFormPage()),
+    );
+
+    await tester.enterText(
+        find.byType(TextFormField).at(0), 'My Portfolio');
+    await tester.enterText(
+        find.byType(TextFormField).at(1), 'Portfolio pribadi');
+
+    await tester.tap(find.text('Save'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Proyek berhasil ditambahkan!'),
+        findsOneWidget);
+  });
+
+  testWidgets('Tombol OK menutup AlertDialog',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: ProjectFormPage()),
+    );
+
+    await tester.enterText(
+        find.byType(TextFormField).at(0), 'My Portfolio');
+    await tester.enterText(
+        find.byType(TextFormField).at(1), 'Portfolio pribadi');
+
+    await tester.tap(find.text('Save'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Proyek berhasil ditambahkan!'),
+        findsOneWidget);
+
+    await tester.tap(find.text('OK'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Proyek berhasil ditambahkan!'),
+        findsNothing);
+  });
+
+  testWidgets('Add Project dari Drawer membuka form',
+      (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
 
     await tester.tap(find.byTooltip('Open navigation menu'));
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('Education').last);
+    await tester.tap(find.text('Add Project'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Education Form'), findsOneWidget);
+    expect(find.text('Add Project Form'), findsOneWidget);
   });
 
-  testWidgets('Validasi Education menolak input kosong', (WidgetTester tester) async {
+  testWidgets('Home dari Drawer kembali ke homepage',
+      (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
 
-    await tester.tap(find.text('Education'));
-    await tester.pumpAndSettle();
-
-    await tester.tap(find.text('Simpan'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Nama institusi wajib diisi!'), findsOneWidget);
-    expect(find.text('Program studi wajib diisi!'), findsOneWidget);
-    expect(find.text('Tahun wajib diisi!'), findsNWidgets(2));
-  });
-
-  testWidgets('Education menampilkan ringkasan setelah input valid', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
-
-    await tester.tap(find.text('Education'));
-    await tester.pumpAndSettle();
-
-    await tester.enterText(find.byType(TextFormField).at(0), 'Universitas Indonesia');
-    await tester.enterText(find.byType(TextFormField).at(1), 'Sistem Informasi');
-    await tester.enterText(find.byType(TextFormField).at(2), '2025');
-    await tester.enterText(find.byType(TextFormField).at(3), '2029');
-
-    await tester.tap(find.text('Simpan'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Ringkasan Pendidikan'), findsOneWidget);
-    expect(find.text('Institusi: Universitas Indonesia'), findsOneWidget);
-    expect(find.text('Jenjang: SMA/SMK'), findsOneWidget);
-    expect(find.text('Program Studi: Sistem Informasi'), findsOneWidget);
-    expect(find.text('Tahun Mulai: 2025'), findsOneWidget);
-    expect(find.text('Tahun Selesai: 2029'), findsOneWidget);
-
-    await tester.tap(find.text('OK'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Ringkasan Pendidikan'), findsNothing);
-    expect(find.text('Education Form'), findsOneWidget);
-  });
-
-  testWidgets('Home dari Drawer membawa kembali ke halaman utama', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
-
-    await tester.tap(find.text('Education'));
+    await tester.tap(find.text('Tambah Proyek'));
     await tester.pumpAndSettle();
 
     await tester.tap(find.byTooltip('Open navigation menu'));
@@ -104,6 +154,5 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('MyPortfolio'), findsOneWidget);
-    expect(find.text('Education Form'), findsNothing);
   });
 }

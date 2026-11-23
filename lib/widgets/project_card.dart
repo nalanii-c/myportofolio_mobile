@@ -1,7 +1,6 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
-import 'package:myportofolio_mobile/screens/education_form.dart';
 
 class ItemCard extends StatelessWidget {
   final ItemHomepage item;
@@ -25,9 +24,7 @@ class ItemCard extends StatelessWidget {
               ),
             );
 
-          if (item.name == "Education") {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const EducationFormPage()));
-          } else if (item.name == "Tambah Proyek") {
+          if (item.name == "Tambah Proyek") {
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -61,7 +58,4 @@ class ItemCard extends StatelessWidget {
     );
   }
 }
-
-
-
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
-import 'package:myportofolio_mobile/screens/education_form.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -10,32 +9,37 @@ class LeftDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        padding: EdgeInsets.zero,
         children: [
-          Container(
-            height: 140,
-            padding: const EdgeInsets.all(16),
-            alignment: Alignment.bottomLeft,
-            decoration: const BoxDecoration(
-              color: Colors.indigo,
-            ),
-            child: const Text(
-              'My Portfolio',
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+          const DrawerHeader(
+            margin: EdgeInsets.zero,
+            padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+            decoration: BoxDecoration(color: Colors.indigo),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'My Portfolio',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(height: 2),
+                Text(
+                  'Explore personal projects and experiences!',
+                  style: TextStyle(fontSize: 12, color: Colors.white),
+                ),
+              ],
             ),
           ),
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text('Home'),
             onTap: () {
-              Navigator.pushAndRemoveUntil(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => MyHomePage()),
-                (route) => false,
               );
             },
           ),
@@ -47,18 +51,6 @@ class LeftDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ProjectFormPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.school_outlined),
-            title: const Text('Education'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const EducationFormPage(),
                 ),
               );
             },

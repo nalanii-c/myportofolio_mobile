@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 
 class ProjectFormPage extends StatefulWidget {
@@ -148,12 +148,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                   ),
-                  onChanged: (String? value) {
-                    setState(() {
-                      _projectLink = value!;
-                    });
-                  },
-                  validator: (String? value) {
+                  validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return null;
                     }
@@ -162,12 +157,17 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
 
                     if (uri == null ||
                         !uri.hasScheme ||
-                        !['http', 'https'].contains(uri.scheme) ||
+                        (uri.scheme != 'http' && uri.scheme != 'https') ||
                         uri.host.isEmpty) {
-                      return "Masukkan URL yang valid!";
+                      return 'Masukkan URL yang valid!';
                     }
 
                     return null;
+                  },
+                  onChanged: (String value) {
+                    setState(() {
+                      _projectLink = value;
+                    });
                   },
                 ),
               ),
@@ -239,6 +239,4 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
     );
   }
 }
-
-
 
