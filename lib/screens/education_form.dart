@@ -17,13 +17,7 @@ class _EducationFormPageState extends State<EducationFormPage> {
   String _startYear = '';
   String _endYear = '';
 
-  final List<String> _degrees = [
-    'SMA/SMK',
-    'Diploma',
-    'S1',
-    'S2',
-    'S3',
-  ];
+  final List<String> _degrees = ['SMA/SMK', 'Diploma', 'S1', 'S2', 'S3'];
 
   String? _validateYear(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -116,10 +110,7 @@ class _EducationFormPageState extends State<EducationFormPage> {
                   border: OutlineInputBorder(),
                 ),
                 items: _degrees.map((degree) {
-                  return DropdownMenuItem(
-                    value: degree,
-                    child: Text(degree),
-                  );
+                  return DropdownMenuItem(value: degree, child: Text(degree));
                 }).toList(),
                 onChanged: (value) {
                   if (value != null) {
